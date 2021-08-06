@@ -56,6 +56,11 @@
       style: basic
       url: https://www.aliyun.com
 
+    - name: Cloudflare
+      icon: cloud orange
+      style: basic
+      url: https://www.cloudflare.com
+
   - name: Work Work
     links:
     - name: Outlook
