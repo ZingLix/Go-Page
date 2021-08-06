@@ -29,35 +29,7 @@ setInterval(function () {
 }, 60000);
 
 // visit
-function updateVisit() {
-    $.getJSON(analyticsAPI.url, {
-        'module': 'API',
-        'method': 'VisitsSummary.getUniqueVisitors',
-        'idSite': analyticsAPI.id,
-        'period': 'day',
-        'date': 'today',
-        'format': 'JSON',
-        'token_auth': analyticsAPI.token
-    }, function (data) {
-        $('#today-visitors img').attr('src', `https://img.shields.io/badge/%E4%BB%8A%E6%97%A5%E8%AE%BF%E5%AE%A2-${encodeURIComponent(data.value)}-brightgreen.svg`);
-    });
-    $.getJSON(analyticsAPI.url, {
-        'module': 'API',
-        'method': 'Live.getCounters',
-        'idSite': analyticsAPI.id,
-        'lastMinutes': '30',
-        'format': 'JSON',
-        'token_auth': analyticsAPI.token
-    }, function (data) {
-        $('#live-visitors img').attr('src', `https://img.shields.io/badge/%E5%BD%93%E5%89%8D%E5%9C%A8%E7%BA%BF-${encodeURIComponent(data[0].visitors)}-brightgreen.svg`);
-    });
-};
-updateVisit();
-setInterval(function () {
-    if (!document.hidden) {
-        updateVisit();
-    };
-}, 60000);
+
 
 // search
 $('#search-services').dropdown();
@@ -75,10 +47,15 @@ function setCookie(name, value) {
 };
 
 function redirect(service, query) {
-    if (service.data('transcode')) {
-        query = query.replace(new RegExp(service.data('transcode-from'), 'g'), service.data('transcode-to'));
-    };
-    window.open(`search/?service=${encodeURIComponent(service.text())}&query=${query}&next=${encodeURIComponent(service.data('url').replace('{query}', query))}`, '_blank');
+    if (query) {
+        if (service.data('transcode')) {
+            query = query.replace(new RegExp(service.data('transcode-from'), 'g'), service.data('transcode-to'));
+        };
+        //window.open(`search/?service=${encodeURIComponent(service.text())}&query=${query}&next=${encodeURIComponent(service.data('url').replace('{query}', query))}`, '_blank');
+        window.open(`${service.data('url').replace('{query}', query)}`, '_blank');
+    } else {
+        window.open(`${service.data('baseurl')}`, '_blank');
+    }
 };
 
 // initialize previous used search service
@@ -93,13 +70,14 @@ $('#search-button').click(function () {
     let service = $(`#${$('#search-services').val()}`);
     let query = $('#search-query').val();
     query = encodeURIComponent(query);
-    if (query) {
-        setCookie('byr_navi_previous_used_search_service', service.val());
-        redirect(service, query);
-    } else {
-        $('#search-div').addClass('error');
-        $('#search-query').attr('placeholder', '请输入搜索内容');
-    };
+    redirect(service, query);
+    // if (query) {
+    //     setCookie('byr_navi_previous_used_search_service', service.val());
+
+    // } else {
+    //     $('#search-div').addClass('error');
+    //     $('#search-query').attr('placeholder', '请输入搜索内容');
+    // };
 });
 
 // query input: click to select
@@ -170,14 +148,15 @@ $('#search-shortcuts .ui.label').each(function () {
         let service = $(`#${$(this).data('search-service-id')}`);
         let query = $('#search-query').val();
         query = encodeURIComponent(query);
-        if (query) {
-            setCookie('byr_navi_previous_used_search_service', service.val());
-            updateDropdown();
-            redirect(service, query);
-        } else {
-            $('#search-div').addClass('error');
-            $('#search-query').attr('placeholder', '请输入搜索内容');
-        };
+        redirect(service, query);
+        // if (query) {
+        //     setCookie('byr_navi_previous_used_search_service', service.val());
+        //     updateDropdown();
+        //     redirect(service, query);
+        // } else {
+        //     $('#search-div').addClass('error');
+        //     $('#search-query').attr('placeholder', '请输入搜索内容');
+        // };
     });
 });
 
