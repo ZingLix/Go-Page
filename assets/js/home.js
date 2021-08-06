@@ -14,9 +14,9 @@ function redirect(service, query) {
             query = query.replace(new RegExp(service.data('transcode-from'), 'g'), service.data('transcode-to'));
         };
         //window.open(`search/?service=${encodeURIComponent(service.text())}&query=${query}&next=${encodeURIComponent(service.data('url').replace('{query}', query))}`, '_blank');
-        window.open(`${service.data('url').replace('{query}', query)}`, '_blank');
+        window.open(`${service.data('url').replace('{query}', query)}`, '_self');
     } else {
-        window.open(`${service.data('baseurl')}`, '_blank');
+        window.open(`${service.data('baseurl')}`, '_self');
     }
 };
 
