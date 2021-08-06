@@ -1,36 +1,5 @@
 // home.js
 
-// GitHub
-function updateGitHub(repository) {
-    $('#github-watch img').attr('src', `https://img.shields.io/github/watchers/${repository}.svg?style=social&label=Watch`);
-    $('#github-star img').attr('src', `https://img.shields.io/github/stars/${repository}.svg?style=social&label=Star`);
-    $('#github-fork img').attr('src', `https://img.shields.io/github/forks/${repository}.svg?style=social&label=Fork`);
-};
-var repository = $('meta[name=repository]').attr('content');
-updateGitHub(repository);
-setInterval(function () {
-    if (!document.hidden) {
-        updateGitHub(repository);
-    };
-}, 60000);
-
-// version
-dayjs.locale('zh-cn');
-dayjs.extend(window.dayjs_plugin_relativeTime);
-function updateVersion(timestamp) {
-    $('#version img').attr('src', `https://img.shields.io/badge/%E6%9B%B4%E6%96%B0%E4%BA%8E-${encodeURIComponent(dayjs(timestamp).fromNow())}-brightgreen.svg`);
-};
-var updateAt = $('meta[name=updated_at]').attr('content');
-updateVersion(updateAt);
-setInterval(function () {
-    if (!document.hidden) {
-        updateVersion(updateAt);
-    };
-}, 60000);
-
-// visit
-
-
 // search
 $('#search-services').dropdown();
 
@@ -38,13 +7,6 @@ function updateDropdown() {
     $('#search-services').dropdown('set selected', Cookies.get('byr_navi_previous_used_search_service'));
 };
 
-function setCookie(name, value) {
-    Cookies.set(name, value, {
-        expires: 365,
-        domain: '.byr-navi.com',
-        secure: true
-    });
-};
 
 function redirect(service, query) {
     if (query) {
@@ -56,13 +18,6 @@ function redirect(service, query) {
     } else {
         window.open(`${service.data('baseurl')}`, '_blank');
     }
-};
-
-// initialize previous used search service
-if (Cookies.get('byr_navi_previous_used_search_service') === undefined || Cookies.get('byr_navi_previous_used_search_service') === '' || $(`#${Cookies.get('byr_navi_previous_used_search_service')}`).length === 0) {
-    setCookie('byr_navi_previous_used_search_service', $('#search-services').val());
-} else {
-    updateDropdown();
 };
 
 // search button
@@ -104,7 +59,6 @@ $(window).keyup(function (event) {
         query = encodeURIComponent(query);
         if (query) {
             if ($('#search-query:focus').length > 0) {
-                setCookie('byr_navi_previous_used_search_service', service.val());
                 redirect(service, query);
             } else {
                 $('#search-query').focus().select();
@@ -121,26 +75,10 @@ $('#search-query').keyup(function (event) {
     if (event.key) {
         if ($('#search-query').val()) {
             $('#search-div').removeClass('error');
-            $('#search-query').attr('placeholder', '立即搜索');
+            $('#search-query').attr('placeholder', 'GO');
         };
     };
 });
-
-// initialize customized shortcuts
-if (Cookies.get('byr_navi_search_shortcuts')) {
-    let shortcuts = JSON.parse(Cookies.get('byr_navi_search_shortcuts'));
-    $('#search-shortcuts .ui.label').each(function () {
-        if (shortcuts[$(this).data('search-service-id')]) {
-            if ($(this).hasClass('hidden')) {
-                $(this).removeClass('hidden');
-            };
-        } else {
-            if (!$(this).hasClass('hidden')) {
-                $(this).addClass('hidden');
-            };
-        };
-    });
-};
 
 // shortcuts
 $('#search-shortcuts .ui.label').each(function () {

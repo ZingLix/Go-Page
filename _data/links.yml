@@ -86,7 +86,7 @@
     - name: Lab Wiki
       icon: book black
       style: basic
-      url: http://172.20.137.42
+      url: http://172.20.137.207
 
     - name: 91
       icon: server black
