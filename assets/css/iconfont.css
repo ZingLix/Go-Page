@@ -1,6 +1,6 @@
 @font-face {
   font-family: "iconfont"; /* Project id  */
-  src: url('iconfont.ttf?t=1628228500811') format('truetype');
+  src: url('iconfont.ttf?t=1628236559867') format('truetype');
 }
 
 .iconfont {
@@ -43,7 +43,7 @@
   content: "\e765";
 }
 
-.icon-google1:before {
+.icon-google:before {
   content: "\e8f0";
 }
 
@@ -53,6 +53,10 @@
 
 .icon-grafana:before {
   content: "\ebb0";
+}
+
+.icon-notion:before {
+  content: "\ec37";
 }
 
 .icon-bilibili-fill:before {
@@ -67,7 +71,7 @@
   content: "\e757";
 }
 
-.icon-jingdong:before {
+.icon-pay-jingdong:before {
   content: "\e8dd";
 }
 
