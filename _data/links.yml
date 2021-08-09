@@ -88,6 +88,11 @@
       style: basic
       url: http://172.20.137.207:9090
 
+    - name: 虚拟机
+      icon: server black
+      style: basic
+      url: https://172.20.137.100
+      
     - name: Lab Wiki
       icon: book black
       style: basic
