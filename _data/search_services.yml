@@ -84,7 +84,14 @@
     style: black
     show: true
 
-
+- id: youdao
+  name: 有道
+  url: https://dict.youdao.com/w/eng/{query}/
+  baseurl: https://dict.youdao.com/
+  shortcut:
+    icon: icon spell check red inverted
+    style: black
+    show: true
 
 - id: subhd
   name: SubHD
