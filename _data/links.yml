@@ -61,6 +61,11 @@
       style: basic
       url: https://www.cloudflare.com
 
+    - name: 路由器
+      icon: wifi
+      style: basic
+      url: http://10.0.0.1
+
   - name: Work Work
     links:
     - name: Outlook
