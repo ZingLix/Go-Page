@@ -73,6 +73,11 @@
       style: basic
       url: https://partner.outlook.cn/mail/inbox
 
+    - name: Office
+      icon: icon microsoft orange
+      style: basic
+      url: https://portal.partner.microsoftonline.cn/Home
+
     - name: ACL Anthology
       icon: graduation cap
       style: basic
@@ -81,7 +86,7 @@
     - name: NAS
       icon: disk black
       style: basic
-      url: http://172.20.137.80:5001
+      url: https://172.20.137.80:5001
 
     - name: Grafana
       icon: iconfont icon-grafana orange
@@ -139,7 +144,7 @@
     - name: 斗鱼
       style: basic
       icon: tv orange
-      url: https://douyu.com/
+      url: https://www.douyu.com/directory/myFollow
 
     - name: V2EX
       style: basic
