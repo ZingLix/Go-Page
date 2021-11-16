@@ -122,7 +122,12 @@
       icon: server black
       style: basic
       url: http://172.20.137.133:18000
-
+      
+    - name: 188
+      icon: server black
+      style: basic
+      url: http://172.20.137.188:18000
+      
     - name: 82
       icon: server black
       style: basic
