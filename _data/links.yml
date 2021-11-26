@@ -87,7 +87,12 @@
       icon: disk black
       style: basic
       url: https://172.20.137.80:5001
-
+      
+    - name: NAS-2
+      icon: disk black
+      style: basic
+      url: https://172.20.137.64:5001
+      
     - name: Grafana
       icon: iconfont icon-grafana orange
       style: basic
