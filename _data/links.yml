@@ -61,6 +61,11 @@
       style: basic
       url: https://www.cloudflare.com
 
+    - name: Overleaf Private
+      icon: file alternate
+      style: basic
+      url: https://overleaf.zinglix.xyz
+
     - name: 路由器
       icon: wifi
       style: basic
@@ -72,6 +77,11 @@
       icon: iconfont icon-office-outlook blue
       style: basic
       url: https://partner.outlook.cn/mail/inbox
+
+    - name: Overleaf
+      icon: file alternate
+      style: basic
+      url: https://www.overleaf.com
 
     - name: Office
       icon: icon microsoft orange
